@@ -5,36 +5,38 @@ html, body {
 	margin: 0;
 }
 
-.player {
-	float: left;
-}
-
 .full {
+	float: left;
 	width: 100%;
 	height: 100%;
 }
 
 .half-vertical {
+	float: left;
 	width: 100%;
 	height: 50%;
 }
 
 .half-horizontal {
+	float: left;
 	width: 50%;
 	height: 100%;
 }
 
 .third-outer {
+	float: left;
 	width: 100%;
 	height: 33%;
 }
 
 .third-inner {
+	float: left;
 	width: 100%;
 	height: 34%;
 }
 
 .quarter {
+	float: left;
 	width: 50%;
 	height: 50%;
 }
