@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="https://github.com/LethalMaus/TwitchMultiView/blob/master/img/logo.png"><br><br>
-  A website for viewing multiple *Twitch Streams* concurrently.
+  A website for viewing multiple <i>Twitch Streams</i> concurrently.
 </p>
 
 ---
@@ -41,13 +41,11 @@ The website can be used in 2 different ways:
 + URL Parameters
 + HTML Inputs
 
----
-
 ### URL Parameters
 
 The following URL Parameters are available & being used:
 
-#### channels
+> channels
 
 List of *Twitch Streamer* names, comma seperated.
 
@@ -56,13 +54,13 @@ List of *Twitch Streamer* names, comma seperated.
 ?channels=LethalMaus,Biaxxation
 ```
 
----
-
 ### HTML Inputs
 
 On the webpage, 4 inputs should be visible.
+
 Enter the desired *Twitch Streamer* names.
-Once the names have been entered, click on the Start button <img src="https://github.com/LethalMaus/TwitchMultiView/blob/master/img/start.png" height="20" width="20">
+
+Once the names have been entered, click on the Start button <img src="https://github.com/LethalMaus/TwitchMultiView/blob/master/img/start.png" height="30" width="30">
 
 ---
 
