@@ -2,6 +2,7 @@
 var parameters = location.search.substring(1).split("&");
 var channels = [];
 var quality;
+var player;
 
 parameters.forEach(parameter => {
     if (parameter.includes("channels=")) {
@@ -36,7 +37,7 @@ function createPlayers() {
     if (channels.length > 0) {
         document.getElementById("main").style.display = "none";
         if (channels.length >= 1) {
-            new Twitch.Player("player1", { width: "100%", height: "100%", channel: channels[0] });
+            this.player = new Twitch.Player("player1", { width: "100%", height: "100%", channel: channels[0] });
         }
         if (channels.length >= 2) {
             new Twitch.Player("player2", { width: "100%", height: "100%", channel: channels[1] });
