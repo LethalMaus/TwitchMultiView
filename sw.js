@@ -1,6 +1,8 @@
 self.addEventListener('fetch', function(event) {
-	console.log(event.request)
+	
   event.respondWith(
-    fetch(event.request)
+  console.log(event.request);
+    fetch(event.request);
+	
   );
 });
