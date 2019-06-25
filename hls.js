@@ -14118,7 +14118,20 @@ function () {
     var xhrSetup = this.xhrSetup;
 
     try {
-      xhr.open('GET', context.url, true);
+      if (xhrSetup) {
+        try {
+          xhrSetup(xhr, context.url);
+        } catch (e) {
+          // fix xhrSetup: (xhr, url) => {xhr.setRequestHeader("Content-Language", "test");}
+          // not working, as xhr.setRequestHeader expects xhr.readyState === OPEN
+          xhr.open('GET', context.url, true);
+          xhrSetup(xhr, context.url);
+        }
+      }
+
+      if (!xhr.readyState) {
+        xhr.open('GET', context.url, true);
+      }
     } catch (e) {
       // IE11 throws an exception on xhr.open if attempting to access an HTTP resource over HTTPS
       this.callbacks.onError({
@@ -14137,7 +14150,7 @@ function () {
     xhr.responseType = context.responseType; // setup timeout before we perform request
 
     this.requestTimeout = window.setTimeout(this.loadtimeout.bind(this), this.config.timeout);
-    xhr.setRequestHeader('Access-Control-Allow-Headers', "");
+    xhr.withCredentials = false;
     xhr.send();
   };
 
