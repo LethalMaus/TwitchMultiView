@@ -1,7 +1,35 @@
-<video controls width="250">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<!-- Or if you want a more recent canary version -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/hls.js@canary"></script> -->
+<video id="video"></video>
+<script>
+  var video = document.getElementById('video');
+  var config = {
+		xhrSetup: function (xhr, url) {
+			xhr.setRequestHeader("access-control-allow-origin", "https://lethalmaus.github.io/")
+		}
+	}
 
-    <source src="https://video-weaver.fra02.hls.ttvnw.net/v1/playlist/CrUE5TDouhyhsM0iGqb2aRol1-ewTgXqs-98XFzb3hVizEmbqUBBHg9aD9rqooqQPakt4_F-SEymkdHif0Lfr_z-yjrgMXbFOdvwXR-9Kx7zr_Y_rN8IZoRaij5JsIm3kWvSxFnhxuoDhakzlvWVYwwLj5r1Bsw8OXGLS4lCMxVGCDcMTJj-H9obspRWC54qVHaECRff8gPdFB11lyA1H9ZDVJzwnWIr8HbNIInJgEpvD1gfb6CDyZlIYPhTxIUM158OHEHxlvdozyy4G5Czc-5C0DTjnstl6JND_WVvLtZOVaQxk1UbMd2eKLQ6Ep_ubwzYT_MqCHiNWBUp6Ybzdbl82m7DPIQz_kxOMwwKHhYcBeASMfB5lvGev6VR1gxXp-30qxUg1ilIuUL6rsKTz-5hG8teOx7mqXYje7EsVyW_fIGlow3iLqw8Pc1tg1rEc8v217D7FhMDczV4YIpUgHeWdEGJeD67R8cTj7xBl3ybagdF6ycpAGF6sOZj3bGsr16hkZPyDV6S43eYDU0hn232uUmSIeXAH24HV6_GUWwEE8LlOTbibcMakAKjIi0xCPfKJu66gDAgA4yJ7CgDdVXBD7vYMMwe3paECO9VyU63-E6pG4-fWMjMByQX8Res_QrW_cjzp970nogbRJh0NK85z6jXAfobK4g88bHDG5wVrbF9XVjLMo-RXypNVXdBKRKpyN3lxZwRtYtpwNlXwhzvTZFdXtz8g95UCZYpN3fjm0eJVegdTxIQjAaat6iU2HxxPgkwKDia9hoMLE7LCTjWMON4myI7.m3u8"
-            type="application/vnd.apple.mpegurl">
-
-    Sorry, your browser doesn't support embedded videos.
-</video>
+this.hls = new Hls(config);
+  if(Hls.isSupported()) {
+    var hls = new Hls();
+    hls.loadSource('https://video-weaver.fra02.hls.ttvnw.net/v1/playlist/CuwE6kx7weiXXpShbcFJ6cM3oC5Zp-2ANZFxpJjGpzSTH0cmm5rCaaOLyMzOXCBVBPCra3JcYvX4DevjihyOYuPnym7h4iqeL1gWY_Gc7hloWd2uo4Bpzx1HvFyI8k0koheAvqnWbkKzbXTps5hZe660AKDvo_5rx4gpoLRxK40qd7K14Q8qENGbaylWw8HYgGr1NdW5ntqdeyvVDQ97Z2pI09PB6MGfumXoS4DtWB4IPciWOSNfkHaQFa9alVNfCnKgOGsel-cPKybUhn-5Ex0jQgHIzmEHmA_84yW4u5yf6vTkIMKzzfZfMGoYoZbuVP5amKowVYeekIas5v2_335D5Z44SeszQt2I7hldJPftE0dox8GXkisjYHkpriZLPV8zmnO3F7LawWx25ZX5UVnXbUFr6PZzmUVz9npkC2kbYzZWPQKiXN6_XZWyxu47uk7isEX_Tcg5cwxjbqcAMe5OgFAvFotIEKNua1dL2ab8guETb1DOFg2bzTXH_vHEPWq69NTQ8CNNfqBfwxY9ax4OpnbffVVVHjZVNvU68C3a37pBz6136U3-Z4uhL2HudcAE4-gMJoLveJ9oUZOE4w4XoK8gE0C5_vJQo6nzL_Ph1q2ZUyy2FxfMgSDXvcvGN6jbFDvffMsV22oMspPMpX5WpEvyBzwJq2yUVJSjLq3BHg7k1u2a_oDRgQGBAWW9CNI2JS2W96yljibiDCkxqt12RlWdjISYVA90qJYQurSSo7RVjFuxmHRGoMiIn0-k3kZKKQ_CD5ANSCrP2RIIXaVzEuX832zscpWNGNVeeCAtAWAmm6RpkFY3VWM99PsSELscQ68ZL8oVwvdJkRUH6jgaDP1c9g0tcf5ynjrzxA.m3u8"
+	type="application/vnd.apple.mpegurl');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+  });
+ }
+ // hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+ // When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element through the `src` property.
+ // This is using the built-in support of the plain video element, without using hls.js.
+ // Note: it would be more normal to wait on the 'canplay' event below however on Safari (where you are most likely to find built-in HLS support) the video.src URL must be on the user-driven
+ // white-list before a 'canplay' event will be emitted; the last video event that can be reliably listened-for when the URL is not on the white-list is 'loadedmetadata'.
+  else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = 'https://video-weaver.fra02.hls.ttvnw.net/v1/playlist/CuwE6kx7weiXXpShbcFJ6cM3oC5Zp-2ANZFxpJjGpzSTH0cmm5rCaaOLyMzOXCBVBPCra3JcYvX4DevjihyOYuPnym7h4iqeL1gWY_Gc7hloWd2uo4Bpzx1HvFyI8k0koheAvqnWbkKzbXTps5hZe660AKDvo_5rx4gpoLRxK40qd7K14Q8qENGbaylWw8HYgGr1NdW5ntqdeyvVDQ97Z2pI09PB6MGfumXoS4DtWB4IPciWOSNfkHaQFa9alVNfCnKgOGsel-cPKybUhn-5Ex0jQgHIzmEHmA_84yW4u5yf6vTkIMKzzfZfMGoYoZbuVP5amKowVYeekIas5v2_335D5Z44SeszQt2I7hldJPftE0dox8GXkisjYHkpriZLPV8zmnO3F7LawWx25ZX5UVnXbUFr6PZzmUVz9npkC2kbYzZWPQKiXN6_XZWyxu47uk7isEX_Tcg5cwxjbqcAMe5OgFAvFotIEKNua1dL2ab8guETb1DOFg2bzTXH_vHEPWq69NTQ8CNNfqBfwxY9ax4OpnbffVVVHjZVNvU68C3a37pBz6136U3-Z4uhL2HudcAE4-gMJoLveJ9oUZOE4w4XoK8gE0C5_vJQo6nzL_Ph1q2ZUyy2FxfMgSDXvcvGN6jbFDvffMsV22oMspPMpX5WpEvyBzwJq2yUVJSjLq3BHg7k1u2a_oDRgQGBAWW9CNI2JS2W96yljibiDCkxqt12RlWdjISYVA90qJYQurSSo7RVjFuxmHRGoMiIn0-k3kZKKQ_CD5ANSCrP2RIIXaVzEuX832zscpWNGNVeeCAtAWAmm6RpkFY3VWM99PsSELscQ68ZL8oVwvdJkRUH6jgaDP1c9g0tcf5ynjrzxA.m3u8"
+	type="application/vnd.apple.mpegurl';
+    video.addEventListener('loadedmetadata',function() {
+      video.play();
+    });
+  }
+</script>
