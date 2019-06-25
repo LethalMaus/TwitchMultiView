@@ -27,7 +27,7 @@ this.hls = new Hls(config);
  // white-list before a 'canplay' event will be emitted; the last video event that can be reliably listened-for when the URL is not on the white-list is 'loadedmetadata'.
   else if (video.canPlayType('application/vnd.apple.mpegurl')) {
     video.src = 'https://video-weaver.fra02.hls.ttvnw.net/v1/playlist/CuwE6kx7weiXXpShbcFJ6cM3oC5Zp-2ANZFxpJjGpzSTH0cmm5rCaaOLyMzOXCBVBPCra3JcYvX4DevjihyOYuPnym7h4iqeL1gWY_Gc7hloWd2uo4Bpzx1HvFyI8k0koheAvqnWbkKzbXTps5hZe660AKDvo_5rx4gpoLRxK40qd7K14Q8qENGbaylWw8HYgGr1NdW5ntqdeyvVDQ97Z2pI09PB6MGfumXoS4DtWB4IPciWOSNfkHaQFa9alVNfCnKgOGsel-cPKybUhn-5Ex0jQgHIzmEHmA_84yW4u5yf6vTkIMKzzfZfMGoYoZbuVP5amKowVYeekIas5v2_335D5Z44SeszQt2I7hldJPftE0dox8GXkisjYHkpriZLPV8zmnO3F7LawWx25ZX5UVnXbUFr6PZzmUVz9npkC2kbYzZWPQKiXN6_XZWyxu47uk7isEX_Tcg5cwxjbqcAMe5OgFAvFotIEKNua1dL2ab8guETb1DOFg2bzTXH_vHEPWq69NTQ8CNNfqBfwxY9ax4OpnbffVVVHjZVNvU68C3a37pBz6136U3-Z4uhL2HudcAE4-gMJoLveJ9oUZOE4w4XoK8gE0C5_vJQo6nzL_Ph1q2ZUyy2FxfMgSDXvcvGN6jbFDvffMsV22oMspPMpX5WpEvyBzwJq2yUVJSjLq3BHg7k1u2a_oDRgQGBAWW9CNI2JS2W96yljibiDCkxqt12RlWdjISYVA90qJYQurSSo7RVjFuxmHRGoMiIn0-k3kZKKQ_CD5ANSCrP2RIIXaVzEuX832zscpWNGNVeeCAtAWAmm6RpkFY3VWM99PsSELscQ68ZL8oVwvdJkRUH6jgaDP1c9g0tcf5ynjrzxA.m3u8'
-	type="application/vnd.apple.mpegurl';
+	type='application/vnd.apple.mpegurl';
     video.addEventListener('loadedmetadata',function() {
       video.play();
     });
