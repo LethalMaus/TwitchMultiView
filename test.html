@@ -6,7 +6,8 @@
   var video = document.getElementById('video');
   var config = {
 		xhrSetup: function (xhr, url) {
-			xhr.setRequestHeader("Access-Control-Allow-Origin","https://lethalmaus.github.io")
+			xhr.setRequestHeader("Access-Control-Allow-Headers","Content-Type, Accept, X-Requested-With");
+			xhr.setRequestHeader("Access-Control-Allow-Origin","*")
 		}
 	}
 
