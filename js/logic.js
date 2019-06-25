@@ -101,7 +101,7 @@ function getLurkUrl(channel) {
         }
     }
     getSig.open("GET", "https://api.twitch.tv/api/channels/" + channel + "/access_token?need_https=true&oauth_token=" + token + "&platform=web&player_backend=mediaplayer&player_type=embed", true);
-    getSig.setRequestHeader("Origin", "https://player.twitch.tv");
+    getSig.setRequestHeader("Access-Control-Allow-Origin", "*");
     getSig.send();
 }
 
