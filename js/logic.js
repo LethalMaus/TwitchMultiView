@@ -2,6 +2,7 @@ var url = new URL(window.location.href);
 var channels = url.searchParams.get("channels").split(",");
 
 function startPlayers() {
+	channels = [];
     var channel1 = document.getElementById("channel1").value;
     var channel2 = document.getElementById("channel2").value;
     var channel3 = document.getElementById("channel3").value;
