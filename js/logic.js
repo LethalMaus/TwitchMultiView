@@ -26,16 +26,16 @@ function createPlayers() {
     if (channels.length > 0) {
         document.getElementById("main").style.display = "none";
         if (channels.length >= 1) {
-            this.player = new Twitch.Player("player1", { width: "100%", height: "100%", channel: channels[0] });
+            new Twitch.Embed("player1", { width: "100%", height: "100%", channel: channels[0], layout: "video", parent: ["lethalmaus.github.io"] });
         }
         if (channels.length >= 2) {
-            new Twitch.Player("player2", { width: "100%", height: "100%", channel: channels[1] });
+            new Twitch.Embed("player2", { width: "100%", height: "100%", channel: channels[1], layout: "video", parent: ["lethalmaus.github.io"] });
         }
         if (channels.length >= 3) {
-            new Twitch.Player("player3", { width: "100%", height: "100%", channel: channels[2] });
+            new Twitch.Embed("player3", { width: "100%", height: "100%", channel: channels[2], layout: "video", parent: ["lethalmaus.github.io"] });
         }
         if (channels.length >= 4) {
-            new Twitch.Player("player4", { width: "100%", height: "100%", channel: channels[3] });
+            new Twitch.Embed("player4", { width: "100%", height: "100%", channel: channels[3], layout: "video", parent: ["lethalmaus.github.io"] });
         }
         resizePlayers();
     } else {
